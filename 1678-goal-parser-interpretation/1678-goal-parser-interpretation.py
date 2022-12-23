@@ -14,5 +14,4 @@ class Solution:
                     stack.pop()
             else: stack.append(char)
                 
-        print(ans)
         return ans
