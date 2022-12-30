@@ -10,6 +10,5 @@ class Solution:
                     ans.append([iptr, jptr])
                     
                 jptr += 1
-        print(ans)
-        
+
         return len(ans)
