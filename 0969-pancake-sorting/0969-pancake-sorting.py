@@ -18,7 +18,6 @@ class Solution:
                 flip(i)
                 flips.append(i+1)
             
-        print(arr)
         return flips
                     
             
