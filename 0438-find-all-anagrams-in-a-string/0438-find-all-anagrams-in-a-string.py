@@ -12,8 +12,6 @@ class Solution:
             if pstr == c:
                 ans.append(lptr)
                 
-            print(c)
-            
             c[s[lptr]] -= 1
             
             if c[s[lptr]] == 0:
