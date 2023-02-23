@@ -18,8 +18,6 @@ class Solution:
             
         ans = []
         
-        print(presum)
-                
         for i in range(len(presum)-1):
             ans.append(chr(((ord(s[i]) - 97 + presum[i]) % 26) + 97))
         
