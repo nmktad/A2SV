@@ -1,10 +1,6 @@
 class Solution:
-    def runningSum(self, nums: List[int]) -> List[int]:
-        presum = [0]
+    def runningSum(self, nums: List[int]) -> List[int]:        
+        for i in range(1, len(nums)):
+            nums[i] += nums[i-1]
         
-        for val in nums:
-            presum.append(val + presum[-1])
-        
-        del presum[0]
-        
-        return presum
+        return nums
