@@ -3,13 +3,6 @@ class Solution:
         if n == 0:
             return 1
         
-        pow  = abs(n)
+        res = self.myPow(x * x, abs(n) / 2) if abs(n) % 2 == 0 else self.myPow(x * x, (abs(n) - 1) / 2) * x
 
-        res = 0
-
-        if pow % 2 == 0:
-            res = self.myPow(x * x, pow / 2)
-        else:
-            res = self.myPow(x * x, (pow - 1) / 2) * x
-
-        return 1/ res if n < 0 else res
+        return res if n >= 0 else 1/res
