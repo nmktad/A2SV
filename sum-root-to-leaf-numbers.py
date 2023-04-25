@@ -7,30 +7,23 @@
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         ans = 0
-        nums = []
 
-        def dfs(node):
-            nonlocal ans, nums
+        def backtrack(node, nums):
+            nonlocal ans
 
             if not node:
                 return
-
+            
             nums.append(str(node.val))
 
             if not node.left and not node.right:
-                print(nums)
                 ans += int(''.join(nums))
-                return
-   
-            
-            if not dfs(node.left):
-                nums.pop()
-            
-            if not dfs(node.right):
-                nums.pop()
+        
+            backtrack(node.left, nums)
+            backtrack(node.right, nums)
 
-            
+            nums.pop()
 
-        dfs(root)
+        backtrack(root, [])
 
         return ans
