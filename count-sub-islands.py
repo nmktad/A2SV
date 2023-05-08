@@ -5,9 +5,10 @@ class Solution:
         def dfs(row, col):
             nonlocal subset        
 
-            if grid1[row][col] == 0:
+            print(row,col)
+
+            if grid1[row][col] != grid2[row][col]:
                 subset = 0
-                return
 
             grid2[row][col] = 0
 
@@ -25,5 +26,6 @@ class Solution:
                 if grid1[row][col] == grid2[row][col] == 1:
                     subset = 1
                     dfs(row, col)
+                    print("after", subset)
                     ans += subset
         return ans
