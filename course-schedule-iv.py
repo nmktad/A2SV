@@ -1,29 +1,17 @@
 class Solution:
-    def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
-        graph = defaultdict(set)
-        indegree = [0] * numCourses
-        ancestors = [set() for _ in range(numCourses)]
+    def checkIfPrerequisite(self, n: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
+        grid = [[False] * n for _ in range(n)]
 
-        for fr, to in prerequisites:
-            graph[fr].add(to)
-            indegree[to] += 1
+        for pre, fr in prerequisites:
+            grid[pre][fr] = True
 
-        queue = deque()
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    grid[i][j] = grid[i][j] or grid[i][k] and grid[k][j]
 
-        for i in range(numCourses):
-            if indegree[i] == 0:
-                queue.append(i)
+        ans = []
+        for fr, to in queries:
+            ans.append(grid[fr][to])
 
-        while queue:
-            curr = queue.popleft()
-
-            for nbr in graph[curr]:
-                ancestors[nbr].add(curr)
-
-                ancestors[nbr] = ancestors[nbr].union(ancestors[curr])
-                indegree[nbr] -= 1
-
-                if indegree[nbr] == 0:
-                    queue.append(nbr)
-        
-        return [fr in ancestors[to] for fr, to in queries]
+        return ans
