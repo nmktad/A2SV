@@ -21,6 +21,4 @@ class Solution:
 
             return flag, maximum
 
-        flag, maximum = checkValidity(root, float('-inf'))
-
-        return flag
+        return checkValidity(root, float('-inf'))[0]
