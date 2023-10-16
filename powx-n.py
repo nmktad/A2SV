@@ -1,8 +1,13 @@
 class Solution:
+    @cache
     def myPow(self, x: float, n: int) -> float:
         if n == 0:
             return 1
         
-        res = self.myPow(x * x, abs(n) / 2) if abs(n) % 2 == 0 else self.myPow(x * x, (abs(n) - 1) / 2) * x
+        if n < 0:
+            return 1 / self.myPow(x, -n)
 
-        return res if n >= 0 else 1/res
+        if n % 2 == 0:
+            return self.myPow(x * x, n / 2)
+
+        return self.myPow(x * x, (n - 1) / 2) * x
