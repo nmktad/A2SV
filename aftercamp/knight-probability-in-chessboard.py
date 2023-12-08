@@ -15,12 +15,10 @@ class Solution:
                         (i+1, j-2), (i+1, j+2), 
                         (i-2, j+1), (i+2, j-1), 
                         (i-2, j-1), (i+2, j+1)]:
+
                         if 0 <= nx < n and 0 <= ny < n:
                             currdp[i][j] += prevdp[nx][ny] / 8
 
             prevdp, currdp = currdp, prevdp
         
         return sum(prevdp[i][j] for i in range(n) for j in range(n))
-
-                
-        
